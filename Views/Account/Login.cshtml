@@ -1,0 +1,75 @@
+﻿@model ASP.NET_GROCERY_WEB_APP.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .login-wrapper {
+        max-width: 400px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        .login-wrapper h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+            color: #28a745;
+        }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #28a745;
+    }
+
+    .btn-login {
+        background-color: #28a745;
+        border: none;
+    }
+
+        .btn-login:hover {
+            background-color: #218838;
+        }
+</style>
+
+<div class="login-wrapper">
+    <h2>Welcome to FreshMart 🛒</h2>
+
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter your email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-check mb-3">
+            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
+            @Html.LabelFor(m => m.RememberMe, new { @class = "form-check-label" })
+        </div>
+
+        <button type="submit" class="btn btn-login w-100">Login</button>
+    }
+
+    <hr />
+    <p class="text-center">
+        Don't have an account?
+        @Html.ActionLink("Register here", "Register", "Account")
+    </p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

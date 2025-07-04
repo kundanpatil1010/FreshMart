@@ -1,0 +1,76 @@
+﻿@model ASP.NET_GROCERY_WEB_APP.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .register-wrapper {
+        max-width: 500px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        .register-wrapper h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+            color: #28a745;
+        }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #28a745;
+    }
+
+    .btn-register {
+        background-color: #28a745;
+        border: none;
+    }
+
+        .btn-register:hover {
+            background-color: #218838;
+        }
+</style>
+
+<div class="register-wrapper">
+    <h2>Create Your FreshMart Account 🛒</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email address" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Create a password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm your password" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-register w-100">Register</button>
+    }
+
+    <hr />
+    <p class="text-center">
+        Already have an account?
+        @Html.ActionLink("Login here", "Login", "Account")
+    </p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

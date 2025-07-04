@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Grocery Store";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .hero-section {
+        background: linear-gradient(to right, #28a745, #218838);
+        color: white;
+        padding: 80px 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+        }
+
+    .feature-icon {
+        width: 80px;
+        transition: transform 0.3s ease;
+    }
+
+        .feature-icon:hover {
+            transform: scale(1.1);
+        }
+
+    .feature-card {
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+    }
+
+        .feature-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .auth-links a {
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container mt-5">
+    <!-- 🌟 Hero Banner -->
+    <div class="hero-section text-center mb-5">
+        <h1>Welcome to FreshMart 🛒</h1>
+        <p>Your one-stop shop for fresh groceries, delivered at your doorstep.</p>
+        <a href="/Products/Index" class="btn btn-light btn-lg mt-3 shadow-sm px-4">Start Shopping</a>
+    </div>
+
+    <!-- 🚀 Features -->
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <img class="feature-icon" src="https://img.icons8.com/color/96/vegetarian-food.png" alt="Fresh Produce" />
+                <h4 class="mt-3">Fresh Produce</h4>
+                <p>Only the freshest vegetables and fruits, picked daily.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <img class="feature-icon" src="https://img.icons8.com/color/96/shopping-cart-loaded.png" alt="Easy Cart" />
+                <h4 class="mt-3">Easy Cart</h4>
+                <p>Seamless shopping with intuitive cart management.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <img class="feature-icon" src="https://img.icons8.com/color/96/delivery.png" alt="Fast Delivery" />
+                <h4 class="mt-3">Fast Delivery</h4>
+                <p>Groceries delivered within 24 hours. No extra cost.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 👤 Account Info -->
+    <div class="text-center mt-4 auth-links">
+        <p class="text-muted">New here? <a href="/Account/Register">Create an account</a> or <a href="/Account/Login">Login</a> to start shopping smart!</p>
+    </div>
+</div>
